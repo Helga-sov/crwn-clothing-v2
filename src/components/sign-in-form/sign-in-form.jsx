@@ -31,11 +31,12 @@ const SignInForm = () => {
 
 		// Step - try to create a user
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(
+			const { user } = await signInAuthUserWithEmailAndPassword(
 				email,
 				password
 			);
-			console.log(response);
+			//setCurrentUser(user);
+			//console.log(response);
 			resetFormFields();
 		} catch (error) {
 			switch (error.code) {
@@ -64,8 +65,8 @@ const SignInForm = () => {
 	};
 
 	const signInWithGoogle = async () => {
-		const { user } = await signInWithGooglePopup();
-		await createUserDocumentFromAuth(user);
+		await signInWithGooglePopup();
+		//await createUserDocumentFromAuth(user);
 		//console.log(user);
 	};
 
